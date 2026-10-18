@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Sarai ❤️</title>
+<style>
+*{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;overflow-x:hidden;
+background:radial-gradient(circle at top,#5c183d,#210c22 55%,#09030b);display:flex;justify-content:center;align-items:center}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,#ff7ebc22,transparent 25%),radial-gradient(circle at 80% 70%,#ff3d8120,transparent 25%);pointer-events:none}
+.card{width:min(92%,520px);padding:34px 25px 38px;text-align:center;position:relative;z-index:2}
+.glow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#ffc8df}.name{font-size:48px;margin:8px 0 5px;text-shadow:0 0 25px #ff5b9c}
+.subtitle{color:#f8c9dc;font-size:17px;margin-bottom:30px}.btn{border:1px solid #ff9bc3;background:#ffffff12;color:#fff;padding:14px 25px;border-radius:30px;font-size:16px;cursor:pointer;box-shadow:0 0 25px #ff4d8d33;transition:.3s}.btn:hover{transform:scale(1.05);background:#ff5d9d22}
+.hidden{display:none}.letter{background:#fff8fc;color:#43182f;border-radius:22px;padding:28px 23px;text-align:left;line-height:1.75;box-shadow:0 15px 60px #0008;margin-top:25px;animation:up .8s ease}
+.letter h2{text-align:center;color:#b72e65;margin-top:0}.signature{text-align:right;font-style:italic;font-size:18px;color:#a52b60}
+.reasons{display:grid;gap:12px;margin:20px 0}.reason{background:#fff1f722;border:1px solid #ffb0cf33;padding:14px;border-radius:16px}
+.question{margin-top:28px;font-size:20px;text-align:center}.choices{text-align:center;margin-top:18px}.yes{background:#ff5c99;border:0}.no{position:relative}
+.final{font-size:22px;line-height:1.6;text-align:center;margin-top:25px;animation:up .8s ease}.small{font-size:13px;color:#f2bed3;margin-top:22px}
+.heart{position:fixed;font-size:20px;animation:float 6s linear forwards;opacity:.9;z-index:1}
+@keyframes float{from{transform:translateY(105vh) rotate(0deg);opacity:0}15%{opacity:1}to{transform:translateY(-15vh) rotate(360deg);opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="glow">Una pequeña sorpresa para</div>
+  <div class="name">Sarai ❤️</div>
+  <div class="subtitle">Mi Princesa ✨</div>
+  <button class="btn" onclick="openSurprise()">Abrir mi sorpresa 💌</button>
+
+  <section id="surprise" class="hidden">
+    <div class="letter">
+      <h2>Para mi Princesa 🌹</h2>
+      <p>Sarai,</p>
+      <p>No sé exactamente en qué momento empezaste a llamar mi atención, pero poco a poco me ha gustado conocerte, hablar contigo y descubrir esa forma tan tuya de ser.</p>
+      <p>No quiero apresurar nada ni convertir esto en una promesa enorme. Solo quiero que sepas que <b>me encanta tener la oportunidad de conocerte un poquito más cada día.</b></p>
+      <p>Así que hice este pequeño rincón solo para ti. Porque a veces unas palabras no alcanzan para decir lo bonita que puede sentirse una persona cuando empieza a ocupar un lugar especial en tus pensamientos.</p>
+      <p class="signature">Con cariño,<br>Ronaldo ❤️</p>
+    </div>
+
+    <div class="reasons">
+      <div class="reason">✨ Me gusta la forma en que eres.</div>
+      <div class="reason">😊 Me gusta cómo una conversación contigo puede mejorar mi día.</div>
+      <div class="reason">❤️ Y me gusta la idea de seguir descubriendo todo lo que hace especial a Sarai.</div>
+    </div>
+
+    <div class="question">Y ahora una pregunta importante…<br><b>¿Me dejas seguir conociéndote, Princesa?</b></div>
+    <div class="choices">
+      <button class="btn yes" onclick="yes()">Sí ❤️</button>
+      <button class="btn no" id="noBtn" onclick="moveNo()">Todavía no 🙈</button>
+    </div>
+
+    <div id="final" class="final hidden">
+      Sabía que esa sonrisa escondida iba a aparecer. 😌❤️<br><br>
+      <b>Esto recién comienza, Sarai.</b><br>
+      Y espero que nos queden muchas conversaciones, risas y momentos bonitos por descubrir. ✨
+      <div class="small">— Ronaldo, para mi Princesa 🌙</div>
+    </div>
+  </section>
+</main>
+
+<script>
+function heart(){
+  const h=document.createElement('div'); h.className='heart';
+  h.textContent=['❤️','💗','💕','✨','🌹'][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+'vw'; h.style.animationDuration=(4+Math.random()*4)+'s';
+  document.body.appendChild(h); setTimeout(()=>h.remove(),8000);
+}
+setInterval(heart,500);
+function openSurprise(){
+  document.querySelector('#surprise').classList.remove('hidden');
+  document.querySelector('.btn').style.display='none';
+  for(let i=0;i<12;i++) setTimeout(heart,i*120);
+}
+function yes(){
+  document.querySelector('#final').classList.remove('hidden');
+  document.querySelector('.choices').style.display='none';
+  for(let i=0;i<30;i++) setTimeout(heart,i*70);
+}
+function moveNo(){
+  const b=document.getElementById('noBtn');
+  b.style.position='fixed';
+  b.style.left=(10+Math.random()*70)+'vw';
+  b.style.top=(20+Math.random()*65)+'vh';
+}
+</script>
+</body>
+</html>
